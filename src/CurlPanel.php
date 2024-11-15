@@ -6,8 +6,10 @@ use Yii;
 use yii\debug\Panel;
 use yii\web\Application;
 
-/***
+/**
+ * Generates cURL command strings for HTTP requests
  * @author Samman <mazenalsmman@gmail.com>
+ * @since 2.0.0
  */
 class CurlPanel extends Panel
 {
@@ -32,7 +34,7 @@ class CurlPanel extends Panel
      */
     public function getDetail(): string
     {
-        return Yii::$app->view->renderFile(__DIR__ . '/views/curlDetails.php', ['panel' => $this]);
+        return Yii::$app->view->renderFile(__DIR__ . '/views/curl-details.php', ['panel' => $this]);
     }
 
     /**
@@ -42,11 +44,12 @@ class CurlPanel extends Panel
     {
         if (!Yii::$app instanceof Application) return [];
         $request = Yii::$app->request;
+
         return [
-            'method' => $request->method,
             'url' => $request->absoluteUrl,
-            'headers' => $request->headers,
             'body' => $request->rawBody,
+            'method' => $request->method,
+            'headers' => $request->headers,
         ];
     }
 }

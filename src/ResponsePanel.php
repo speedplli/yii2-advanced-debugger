@@ -7,9 +7,9 @@ use yii\debug\Panel;
 use yii\web\Response;
 
 /**
- * Debugger panel that collects and displays request data.
+ * Debugger panel that displays request debugging information.
  * @author Mazen Samman <mazenalsmman@gmail.com>
- * @since 2.0
+ * @since 2.0.0
  */
 class ResponsePanel extends Panel
 {
@@ -34,7 +34,7 @@ class ResponsePanel extends Panel
      */
     public function getDetail(): string
     {
-        return Yii::$app->view->renderFile(__DIR__ . '/views/responseDetails.php', ['panel' => $this]);
+        return Yii::$app->view->renderFile(__DIR__ . '/views/response-details.php', ['panel' => $this]);
     }
 
     /**
